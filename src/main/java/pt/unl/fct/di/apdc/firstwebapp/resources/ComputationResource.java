@@ -38,7 +38,10 @@ public class ComputationResource {
 	@Produces(MediaType.TEXT_PLAIN)
 	public Response hello() throws IOException{
 		try {
-			throw new IOException("UPS");
+			LOG.fine("Saying hello.");
+			return Response.ok().entity("Hello human!").build();
+
+			//throw new IOException("UPS");
 		} catch (Exception e) {
 			LOG.log(Level.SEVERE, "Exception on Method /hello", e);
 			return Response.temporaryRedirect(URI.create("/error/500.html")).build();
